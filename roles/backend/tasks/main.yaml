@@ -4,7 +4,7 @@
 - name: "enabling NodeJS version:20"
   ansible.builtin.command: "dnf module enable nodejs:20 -y"
 
-- name: "Installing version 20 Nodejs"
+- name: "Installing Nodejs and Mysql"
   ansible.builtin.package:
     name: "{{ item }}"
     state: present
