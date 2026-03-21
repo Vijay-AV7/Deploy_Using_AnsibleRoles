@@ -16,7 +16,7 @@
 
 - name: "Creating HTML directory"
   ansible.builtin.file:
-    src: /usr/share/nginx/html
+    path: /usr/share/nginx/html
     state: directory
 
 - name: "Downloading frontend file"
