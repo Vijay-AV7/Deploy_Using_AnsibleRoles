@@ -5,9 +5,9 @@
 
 - name: "Installing Nginx"
   ansible.builtin.service:
-  name: nginx
-  enabled: yes
-  state: started
+    name: nginx
+    enabled: yes
+    state: started
 
 - name: "Deleting HTML pages from Nginx" # here we are removing/deleting the html directory as files from HTML directory will gets deleted and then creating again html directory.
   ansible.builtin.file:
@@ -36,7 +36,7 @@
 
 - name: "Installing Nginx"
   ansible.builtin.service:
-  name: nginx
-  enabled: yes
-  state: restarted
+    name: nginx
+    enabled: yes
+    state: restarted
   
