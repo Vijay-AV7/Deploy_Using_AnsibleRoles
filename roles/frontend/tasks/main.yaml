@@ -35,6 +35,11 @@
     src: expense.conf
     dest: /etc/nginx/default.d/expense.conf
 
+# - name: "Reverse proxy configuration"
+#   ansible.builtin.template:
+#     src: expense.conf.j2
+#     dest: /etc/nginx/default.d/expense.conf
+
 - name: "Installing Nginx"
   ansible.builtin.service:
     name: nginx
