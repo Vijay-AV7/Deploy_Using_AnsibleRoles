@@ -35,6 +35,7 @@
   ansible.builtin.unarchive:
     src: /app
     dest: /app
+    remote_src: yes
 
 - name: "Installing dependencies of package.json"
   ansible.builtin.npm:
