@@ -1,5 +1,5 @@
 - name: "Configuring Database"
-  hosts: database.vijaydev.space
+  hosts: mysql.vijaydev.space
   become: yes
   vars_files:
     - roles/mysql/vars/vault.yaml
