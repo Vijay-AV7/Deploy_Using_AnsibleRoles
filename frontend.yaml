@@ -1,0 +1,5 @@
+- name: "Configuring frontend"
+  hosts: frontend.vijaydev.space
+  become: yes
+  roles:
+    - frontend
