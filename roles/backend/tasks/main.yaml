@@ -61,8 +61,8 @@
   community.mysql.mysql_db:
     name: all
     state: import
-    login_user: "{{ mysql_user }}"
-    login_password: " {{ mysql_password }} "
+    login_user: root
+    login_password: ExpenseApp@1
     login_host: database.vijaydev.space
     target: /app/schema/backend.sql
 
