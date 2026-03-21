@@ -45,7 +45,7 @@
 #     src: expense.conf.j2
 #     dest: /etc/nginx/default.d/expense.conf
 
-- name: "Installing Nginx"
+- name: "Restarting Nginx"
   tags: 
     - deployment
   ansible.builtin.service:
