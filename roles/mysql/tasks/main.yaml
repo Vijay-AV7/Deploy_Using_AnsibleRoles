@@ -14,8 +14,8 @@
     login_user: root
     login_password: "{{ mysql_password }}"
     login_host: database.vijaydev.space
-  ignore_errors: true
   registers: mysql_info
+  ignore_errors: true
 
 - name: "Setting up root password to database"
   ansible.builtin.command: mysql_secure_installation --set-root-pass {{ mysql_rootpasswd }}
