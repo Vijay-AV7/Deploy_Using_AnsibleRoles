@@ -33,7 +33,7 @@
     path: /app
 
 - name: "configuring backend as service"
-  ansible.builtin.copy:
+  ansible.builtin.template:
     src: backend.service.j2
     dest: /etc/systemd/system/backend.service
 
