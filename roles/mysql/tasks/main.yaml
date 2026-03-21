@@ -2,3 +2,22 @@
   ansible.builtin.package:
     name: mysql-server
     state: present
+
+- name: "Enabling and starting mysql-server"
+  ansible.builtin.service:
+    name: mysqld
+    enabled: yes
+    state: started
+
+- name: "Login to Database server with Rootpassword"
+  community.mysql.mysql_info: 
+    name: mysql
+    login_user: root
+    login_password: "{{ mysql_password }}"
+    login_host: database.vijaydev.space
+  register: mysql_info
+  ignore_errors: true
+
+- name: "Setup Root Password"
+  ansible.buitin.command: "mysql_secure_installation --set-root-pass {{ mysql_password }} "
+  when: mysql_info.failed is true
