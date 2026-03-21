@@ -19,6 +19,7 @@
     executable: pip3.9
   loop:
     - PyMySQL
+    - cryptography
 
 - name: "Download backend files"
   ansible.builtin.get_url:
