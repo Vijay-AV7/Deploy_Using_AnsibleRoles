@@ -21,21 +21,26 @@
     - PyMySQL
     - cryptography
 
-- name: "Download backend files"
-  ansible.builtin.get_url:
-    url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
-    dest: /tmp/backend.zip
+- name: "Importing common role for Downloading the file and placing in /app directory"
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: main
 
-- name: "Creating directory /app"
-  ansible.builtin.file:
-    state: directory
-    path: /app
+# - name: "Download backend files"
+#   ansible.builtin.get_url:
+#     url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
+#     dest: /tmp/backend.zip
 
-- name: "Unzip the code in /app"
-  ansible.builtin.unarchive:
-    src: /tmp/backend.zip
-    dest: /app
-    remote_src: yes
+# - name: "Creating directory /app"
+#   ansible.builtin.file:
+#     state: directory
+#     path: /app
+
+# - name: "Unzip the code in /app"
+#   ansible.builtin.unarchive:
+#     src: /tmp/backend.zip
+#     dest: /app
+#     remote_src: yes
 
 - name: "Installing dependencies of package.json"
   ansible.builtin.npm:

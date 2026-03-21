@@ -14,21 +14,26 @@
     path: /usr/share/nginx/html
     state: absent
 
-- name: "Creating HTML directory"
-  ansible.builtin.file:
-    path: /usr/share/nginx/html
-    state: directory
+- name: "Importing common role foe Downloading the file and placing in html directory"
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: main
 
-- name: "Downloading frontend file"
-  ansible.builtin.get_url:
-    url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
-    dest: /tmp/frontend.zip
+# - name: "Creating HTML directory"
+#   ansible.builtin.file:
+#     path: /usr/share/nginx/html
+#     state: directory
 
-- name: "Unzipping files to /usr/share/nginx/html"
-  ansible.builtin.unarchive:
-    src: /tmp/frontend.zip
-    dest: /usr/share/nginx/html
-    remote_src: yes
+# - name: "Downloading frontend file"
+#   ansible.builtin.get_url:
+#     url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
+#     dest: /tmp/frontend.zip
+
+# - name: "Unzipping files to /usr/share/nginx/html"
+#   ansible.builtin.unarchive:
+#     src: /tmp/frontend.zip
+#     dest: /usr/share/nginx/html
+#     remote_src: yes
 
 - name: "Reverse proxy configuration"
   ansible.builtin.copy:

@@ -1,0 +1,15 @@
+- name: "Download backend files"
+  ansible.builtin.get_url:
+    url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-{{ FILE_TYPE }}-v2.zip
+    dest: /tmp/{{ FILE_TYPE }}.zip
+
+- name: "Creating directory '{{ APP_LOCATION }}'"
+  ansible.builtin.file:
+    state: directory
+    path: "{{ APP_LOCATION }}"
+
+- name: "Unzip the code in '{{ APP_LOCATION }}'"
+  ansible.builtin.unarchive:
+    src: /tmp/{{ FILE_TYPE }}.zip
+    dest: "{{ APP_LOCATION }}"
+    remote_src: yes
