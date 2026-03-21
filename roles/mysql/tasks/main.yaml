@@ -1,19 +1,19 @@
 - name: "Installing mysql-server"
   ansible.builtin.package:
-  name: mysql-server
-  state: present
+    name: mysql-server
+    state: present
 
 - name: "Installing mysql-server"
   ansible.builtin.service:
-  name: mysqld
-  enabled: yes
-  state: start
+    name: mysqld
+    enabled: yes
+    state: start
 
 - name: "Login to database using root password"
   community.mysql.mysql_info:
-  login_user: root
-  login_password: "{{ mysql_password }}"
-  login_host: database.vijaydev.space
+    login_user: root
+    login_password: "{{ mysql_password }}"
+    login_host: database.vijaydev.space
   ignore_errors: true
   registers: mysql_info
 
