@@ -22,7 +22,7 @@
 - name: "Download backend files"
   ansible.builtin.get_url:
     url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
-    dest: /tmp/backend
+    dest: /tmp/backend.zip
 
 - name: "Creating directory /app"
   ansible.builtin.file:
@@ -31,7 +31,7 @@
 
 - name: "copying files from tmp to app"
   ansible.builtin.copy:
-    src: /tmp/backend
+    src: /tmp/backend.zip
     dest: /app
     remote_src: yes
 
