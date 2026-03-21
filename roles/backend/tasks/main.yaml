@@ -42,9 +42,14 @@
     path: /app
 
 - name: "configuring backend as service"
-  ansible.builtin.template:
-    src: backend.service.j2
+  ansible.builtin.copy: #Here if we use copy module then src will refer files
+    src: backend.service 
     dest: /etc/systemd/system/backend.service
+
+# - name: "configuring backend as service"
+#   ansible.builtin.template:
+#     src: backend.service.j2 #Here if we use template module then src will refer template
+#     dest: /etc/systemd/system/backend.service
 
 - name: "Starting and enabling backend"
   ansible.builtin.service:
