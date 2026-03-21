@@ -46,6 +46,8 @@
 #     dest: /etc/nginx/default.d/expense.conf
 
 - name: "Installing Nginx"
+  tags: 
+    - deployment
   ansible.builtin.service:
     name: nginx
     enabled: yes
