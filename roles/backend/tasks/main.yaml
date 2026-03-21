@@ -29,15 +29,9 @@
     state: directory
     path: /app
 
-- name: "copying files from tmp to app"
-  ansible.builtin.copy:
-    src: /tmp/backend.zip
-    dest: /app
-    remote_src: yes
-
 - name: "Unzip the code in /app"
   ansible.builtin.unarchive:
-    src: /app
+    src: /tmp/backend.zip
     dest: /app
     remote_src: yes
 
