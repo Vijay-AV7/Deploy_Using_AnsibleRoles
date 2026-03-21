@@ -45,6 +45,8 @@
 #     remote_src: yes
 
 - name: "Installing dependencies of package.json"
+  tags:
+    - deployment
   ansible.builtin.npm:
     path: /app
 
