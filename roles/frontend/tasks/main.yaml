@@ -26,8 +26,9 @@
 
 - name: "Unzipping files to /usr/share/nginx/html"
   ansible.builtin.unarchive:
-    src: /temp/frontend.zip
+    src: /tmp/frontend.zip
     dest: /usr/share/nginx/html
+    remote_src: yes
 
 - name: "Reverse proxy configuration"
   ansible.builtin.copy:
