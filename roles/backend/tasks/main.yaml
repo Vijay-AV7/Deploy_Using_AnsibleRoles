@@ -66,4 +66,10 @@
     login_host: database.vijaydev.space
     target: /app/schema/backend.sql
 
+- name: "restarting and enabling backend"
+  ansible.builtin.service:
+    name: backend
+    daemon-reload: true
+    state: restarted
+
 
