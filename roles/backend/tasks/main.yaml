@@ -29,6 +29,7 @@
   ansible.builtin.copy:
     src: /tmp/backend
     dest: /app
+    remote_src: yes
 
 - name: "Unzip the code in /app"
   ansible.builtin.unarchive:
