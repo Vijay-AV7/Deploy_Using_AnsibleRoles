@@ -9,10 +9,10 @@
     enabled: yes
     state: started
 
-- name: "Deleting HTML pages from Nginx" # here we are removing/deleting the html directory as files from HTML directory will gets deleted and then creating again html directory.
-  ansible.builtin.file:
-    path: /usr/share/nginx/html
-    state: absent
+# - name: "Deleting HTML pages from Nginx" # here we are removing/deleting the html directory as files from HTML directory will gets deleted and then creating again html directory.
+#   ansible.builtin.file:
+#     path: /usr/share/nginx/html
+#     state: absent
 
 - name: "Importing common role foe Downloading the file and placing in html directory"
   ansible.builtin.include_role:

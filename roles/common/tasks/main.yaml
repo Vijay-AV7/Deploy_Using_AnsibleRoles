@@ -5,6 +5,13 @@
     url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-{{ FILE_TYPE }}-v2.zip
     dest: /tmp/{{ FILE_TYPE }}.zip
 
+- name: "Deleting directory '{{ APP_LOCATION }}'" # In the initial run /app is not avaiable so this will start working from second run
+  tags: 
+    - deployment
+  ansible.builtin.file:
+    state: absent
+    path: "{{ APP_LOCATION }}"
+
 - name: "Creating directory '{{ APP_LOCATION }}'"
   tags:
     - deployment
