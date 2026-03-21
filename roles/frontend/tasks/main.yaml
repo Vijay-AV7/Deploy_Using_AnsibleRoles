@@ -1,0 +1,42 @@
+- name: "Installing Nginx"
+  ansible.builtin.package:
+  name: nginx
+  state: present
+
+- name: "Installing Nginx"
+  ansible.builtin.service:
+  name: nginx
+  enabled: yes
+  state: started
+
+- name: "Deleting HTML pages from Nginx" # here we are removing/deleting the html directory as files from HTML directory will gets deleted and then creating again html directory.
+  ansible.builtin.file:
+    src: /usr/share/nginx/html
+    state: absent
+
+- name: "Creating HTML directory"
+  ansible.builtin.file:
+    src: /usr/share/nginx/html
+    state: directory
+
+- name: "Downloading frontend file"
+  ansible.builtin.get_url:
+    url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
+    dest: /tmp/frontend.zip
+
+- name: "Unzipping files to /usr/share/nginx/html"
+  ansible.builtin.unarchive:
+    src: /temp/frontend.zip
+    dest: /usr/share/nginx/html
+
+- name: "Reverse proxy configuration"
+  ansible.builtin.copy:
+    src: expense.conf
+    dest: /etc/nginx/default.d/expense.conf
+
+- name: "Installing Nginx"
+  ansible.builtin.service:
+  name: nginx
+  enabled: yes
+  state: restarted
+  
