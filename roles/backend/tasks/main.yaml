@@ -6,8 +6,12 @@
 
 - name: "Installing version 20 Nodejs"
   ansible.builtin.package:
-    name: nodejs
+    name: {{ item }}
     state: present
+  loop:
+    - nodejs
+    - zip
+
 
 # - name: "Starting and enabling version 20 Nodejs"
 #   ansible.builtin.service:
