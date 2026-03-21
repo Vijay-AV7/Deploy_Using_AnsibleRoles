@@ -22,8 +22,8 @@
     - cryptography
 
 - name: "Importing common role for Downloading the file and placing in /app directory"
-  tags:
-    - deployment
+  # tags:
+  #   - deployment
   ansible.builtin.include_role:
     name: common
     tasks_from: main
