@@ -1,4 +1,5 @@
 - name: "Configuring backend server"
   hosts: backend.vijaydev.space
+  become: yes
   roles:
     - backend
