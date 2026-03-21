@@ -43,7 +43,6 @@
     enabled: yes
     daemon-reload: true
     state: started
-  
 
 - name: "Creating expense user"
   ansible.builtin.user:
@@ -53,7 +52,7 @@
   community.mysql.mysql_db:
     name: all
     state: import
-    login_user: root
+    login_user: "{{ mysql_user }}"
     login_password: " {{ mysql_password }} "
     login_host: backend.vijaydev.space
     target: /app/schema/backend.sql
