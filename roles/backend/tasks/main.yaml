@@ -1,0 +1,42 @@
+- name: "Disabling default NodeJS version"
+  ansible.builtin.command: "dnf module disable nodejs -y"
+
+- name: "enabling NodeJS version:20"
+  ansible.builtin.command: "dnf module enable nodejs:20 -y"
+
+- name: "Installing version 20 Nodejs"
+  ansible.builtin.package:
+    name: nodejs
+    state: present
+
+- name: "Starting and enabling version 20 Nodejs"
+  ansible.builtin.service:
+    name: nodejs
+    enabled: yes
+    state: started
+
+- name: "Download backend files"
+  ansible.builtin.get_url:
+    url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
+    dest: /tmp/backend
+
+- name: "Creating directory /app"
+  ansible.buultin.file:
+    state: directory
+    path: /app
+
+- name: "copying files from tmp to app"
+  ansible.builtin.copy:
+    src: /tmp/backend
+    dest: /app
+
+- name: "Unzip the code in /app"
+  ansible.builtin.unarchive:
+    src: /app
+    dest: /app
+
+- name: "Installing dependencies of package.json"
+  ansible.builtin.npm:
+    path: /app
+
+
