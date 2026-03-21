@@ -22,6 +22,8 @@
     - cryptography
 
 - name: "Importing common role for Downloading the file and placing in /app directory"
+  tags:
+    - deployment
   ansible.builtin.include_role:
     name: common
     tasks_from: main
@@ -72,6 +74,8 @@
     target: /app/schema/backend.sql
 
 - name: "restarting and enabling backend"
+  tags:
+    - deployment
   ansible.builtin.service:
     name: backend
     daemon-reload: true
