@@ -9,11 +9,11 @@
     name: nodejs
     state: present
 
-- name: "Starting and enabling version 20 Nodejs"
-  ansible.builtin.service:
-    name: nodejs
-    enabled: yes
-    state: started
+# - name: "Starting and enabling version 20 Nodejs"
+#   ansible.builtin.service:
+#     name: nodejs
+#     enabled: yes
+#     state: started
 
 - name: "Download backend files"
   ansible.builtin.get_url:
