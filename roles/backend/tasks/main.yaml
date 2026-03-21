@@ -12,6 +12,14 @@
     - nodejs
     - mysql
 
+- name: "Installing packages"
+  ansible.builtin.pip:
+    name: "{{ item }}"
+    state: present
+    executable: pip3.9
+  loop:
+    - PyMySQL
+
 - name: "Download backend files"
   ansible.builtin.get_url:
     url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip
