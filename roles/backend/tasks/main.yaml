@@ -62,7 +62,7 @@
     state: import
     login_user: "{{ mysql_user }}"
     login_password: " {{ mysql_password }} "
-    login_host: backend.vijaydev.space
+    login_host: database.vijaydev.space
     target: /app/schema/backend.sql
 
 
