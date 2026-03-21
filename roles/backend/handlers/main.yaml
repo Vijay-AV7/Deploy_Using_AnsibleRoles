@@ -1,0 +1,6 @@
+- name: "Starting and enabling backend"
+  ansible.builtin.service:
+    name: backend
+    enabled: yes
+    daemon-reload: true
+    state: started

@@ -50,13 +50,8 @@
   ansible.builtin.template:
     src: backend.service.j2 #Here if we use template module then src will refer template
     dest: /etc/systemd/system/backend.service
-
-- name: "Starting and enabling backend"
-  ansible.builtin.service:
-    name: backend
-    enabled: yes
-    daemon-reload: true
-    state: started
+  notify: #Notify when some change event happened and redirect to handler and execute the handler
+    - Starting and enabling backend
 
 - name: "Creating expense user"
   ansible.builtin.user:
