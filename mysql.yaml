@@ -1,5 +1,5 @@
 - name: "Configuring Database"
-  hosts: 172.31.25.96 #mysql.vijaydev.space
+  hosts: mysql.vijaydev.space
   become: yes
   vars_files:
     - roles/mysql/vars/main.yaml  #-> AWS SSM generated from Parameter store
