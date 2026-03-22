@@ -19,10 +19,9 @@
     - cryptography
     - PyMySQL
 
-# - name: "AWS SSM Key"
-#   ansible.builtin.debug:
-#     msg: "{{  }}"
-#   register: AWS_SSM
+- name: Fetch MySQL root password from SSM
+  ansible.builtin.set_fact:
+    mysql_password: "{{ lookup('amazon.aws.aws_ssm', '/mysql/mysql_password', decrypt=True ) }}"
 
 - name: "Login to Database server with Rootpassword"
   community.mysql.mysql_info: 
