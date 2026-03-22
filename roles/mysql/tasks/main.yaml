@@ -21,11 +21,11 @@
   community.mysql.mysql_info: 
     name: mysql
     login_user: root
-    login_password: "{{ mysql_password }}"
+    login_password: "{{ lookup('amazon.aws.aws_ssm', '/mysql/mysql_password', decrypt=True ) }}" #"{{ mysql_password }}"
     login_host: 172.31.25.96 #mysql.vijaydev.space
   register: mysql_info
   ignore_errors: true
 
 - name: "Setup Root Password"
-  ansible.builtin.command: "mysql_secure_installation --set-root-pass {{ mysql_password }} "
+  ansible.builtin.command: "mysql_secure_installation --set-root-pass {{ lookup('amazon.aws.aws_ssm', '/mysql/mysql_password', decrypt=True ) }} "
   when: mysql_info.failed is true

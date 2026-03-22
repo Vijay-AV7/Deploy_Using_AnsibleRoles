@@ -1,2 +1,1 @@
-mysql_password: "{{ lookup('amazon.aws.aws_ssm', '/mysql/mysql_password', decrypt=True ) }}" 
-#ExpenseApp@1
+# mysql_password: ExpenseApp@1
