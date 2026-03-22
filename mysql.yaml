@@ -2,6 +2,7 @@
   hosts: mysql.vijaydev.space
   become: yes
   vars_files:
-    - roles/mysql/vars/vault.yaml
+    - roles/mysql/vars/main.yaml  #-> AWS SSM generated from Parameter store
+    # - roles/mysql/vars/vault.yaml -> Ansible vaukt key
   roles:
   - mysql
