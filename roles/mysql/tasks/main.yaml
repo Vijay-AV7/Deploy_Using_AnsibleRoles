@@ -14,7 +14,7 @@
     name: mysql
     login_user: root
     login_password: "{{ mysql_password }}"
-    login_host: database.vijaydev.space
+    login_host: mysql.vijaydev.space
   register: mysql_info
   ignore_errors: true
 
