@@ -16,12 +16,19 @@
   loop:
     - boto3
     - botocore
+    - cryptography
+    - PyMySQL
+
+- name: "AWS SSM Key"
+  ansible.builtin.debug:
+    msg: "{{ lookup('amazon.aws.aws_ssm', '/mysql/mysql_password', decrypt=True ) }}"
+  register: AWS_SSM
 
 - name: "Login to Database server with Rootpassword"
   community.mysql.mysql_info: 
     name: mysql
     login_user: root
-    login_password: "{{ lookup('amazon.aws.aws_ssm', '/mysql/mysql_password', decrypt=True ) }}" #"{{ mysql_password }}"
+    login_password: "{{ mysql_password }}"
     login_host: 172.31.25.96 #mysql.vijaydev.space
   register: mysql_info
   ignore_errors: true
