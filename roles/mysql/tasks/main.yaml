@@ -9,6 +9,14 @@
     enabled: yes
     state: started
 
+- name: "Installing python dependencies boto3 and botocore"
+  ansible.builtin.pip:
+    name: "{{ item }}"
+    executable: pip3.9
+  loop:
+    - boto3
+    - botocore
+
 - name: "Login to Database server with Rootpassword"
   community.mysql.mysql_info: 
     name: mysql
